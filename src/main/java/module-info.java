@@ -8,7 +8,6 @@ module com.example.powersorter {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
 
     opens com.example.powersorter to javafx.fxml;
     exports com.example.powersorter;
