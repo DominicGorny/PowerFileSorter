@@ -16,8 +16,8 @@
          <items>
             <TreeTableView prefHeight="393.0" prefWidth="305.0">
               <columns>
-                <TreeTableColumn prefWidth="91.0" text="Hierachy" />
-                <TreeTableColumn prefWidth="71.0" text="C2" />
+                <TreeTableColumn prefWidth="75.0" text="C1" />
+                <TreeTableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TreeTableView>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
