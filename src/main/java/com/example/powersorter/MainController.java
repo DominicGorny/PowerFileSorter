@@ -1,6 +1,7 @@
 package com.example.powersorter;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Callback;
@@ -28,12 +29,11 @@ public class MainController {
         par1.getChildren().setAll(chi1,chi2);
         tableView.setRoot(par1);
         tableView.refresh();
-        column.setCellFactory(new Callback<TreeTableColumn<String, String>, TreeTableCell<String, String>>() {
+        column.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<String, String>, ObservableValue<String>>() {
             @Override
-            public TreeTableCell<String, String> call(TreeTableColumn<String, String> param) {
-                TreeTableCell<String, String> returner = new TreeTableCell<>();
-                returner.setText(param.toString());
-                return returner;
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<String, String> param) {
+
+                return new SimpleStringProperty(param.getValue().getValue());
             }
         });
     }
