@@ -1,7 +1,10 @@
 package com.example.powersorter;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
+import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
+import javax.xml.transform.Source;
 import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -35,7 +38,25 @@ public class FileCollector {
         return inputItem;
     }
 
+    TreeItem<IndvFile> multiLayerScoop(TreeItem<IndvFile> inputItem)
+    {
+        for (File childFile: inputItem.getValue().getEncapsulatedFile().listFiles())
+        {
 
+            if (childFile.isDirectory())
+            {
+                TreeItem<IndvFile> newChild = new TreeItem<>(new IndvFile(childFile));
+                multiLayerScoop(newChild);
+                inputItem.getChildren().add(newChild);
+            }
+            else
+            {
+                inputItem.getChildren().add(new TreeItem<IndvFile>(new IndvFile(childFile)));
+            }
+        }
+
+        return inputItem;
+    }
 
 
 
