@@ -3,14 +3,21 @@ package com.example.powersorter;
 import java.io.File;
 import java.util.List;
 
+/**
+ * A class that represents and induvidual file in a directory and stores information relating to this file
+ */
 public class IndvFile {
+
     String name = null;
     String type = null;
 
     File encapsulatedFile = null;
 
 
-
+    /**
+     * Constructor that builds and individual file class by using the information from a java file type object
+     * @param representedFile the file that this object represents
+     */
     IndvFile(File representedFile)
     {
         this.name = representedFile.getName();
@@ -26,15 +33,28 @@ public class IndvFile {
         this.encapsulatedFile = representedFile;
     }
 
+    /**
+     * get File name
+     * @return name
+     */
     String getName()
     {
         return this.name;
     }
+
+    /**
+     * get the type of the file as a string
+     * @return file type
+     */
     String getType()
     {
         return this.type;
     }
 
+    /**
+     * return the actual file object that this class represents
+     * @return Java File object
+     */
     File getEncapsulatedFile()
     {
         return encapsulatedFile;

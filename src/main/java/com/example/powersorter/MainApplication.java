@@ -7,16 +7,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Runs the main App screen
+ */
 public class MainApplication extends Application {
 
-//    @FXML
-//    private TreeTableView<String> treeTableView;
-//    @FXML
-//    private TreeTableColumn<String,String> column;
     MainController myController = new MainController();
 
 
-
+    /**
+     * starts the stage and defines the window
+     * @param stage the primary stage for this application, onto which
+     * the application scene can be set.
+     * Applications may create other stages, if needed, but they will not be
+     * primary stages.
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -29,6 +35,10 @@ public class MainApplication extends Application {
         stage.show();
     }
 
+    /**
+     * launches the app
+     * @param args launch rgumrnts
+     */
     public static void main(String[] args) {
         launch();
     }

@@ -9,12 +9,24 @@ import java.io.File;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * object that is given a specific file path (to a folder) and contains functions to build a sub directory
+ * tree of the folder using TreeItems<IndvFile>
+ */
 public class FileCollector {
 
-
+    /**
+     * String to the File path of the parent object
+     */
     String parentPath = null;
+    /**
+     * a java File object made using the parent File Path
+     */
     File parentFile = null;
 
+    /**
+     * A Tree Iten holding an IndvFile object which encapsulates the parent file object
+     */
     TreeItem<IndvFile> parentItem = null;
 
     FileCollector(String parentPath)
