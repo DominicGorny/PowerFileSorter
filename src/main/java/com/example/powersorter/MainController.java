@@ -11,9 +11,9 @@ public class MainController {
     private Label welcomeText;
 
     @FXML
-    private TreeTableView<String> tableView;
+    private TreeTableView<IndvFile> tableView;
     @FXML
-    private TreeTableColumn<String,String> column;
+    private TreeTableColumn<IndvFile,String> column;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -23,17 +23,17 @@ public class MainController {
 
     void prepareTreeTable()
     {
-        TreeItem<String> par1 = new TreeItem<>("Parent1");
-        TreeItem<String> chi1 = new TreeItem<>("Child1");
-        TreeItem<String> chi2 = new TreeItem<>("Child2");
+        TreeItem<IndvFile> par1 = new TreeItem<>(new IndvFile("p1"));
+        TreeItem<IndvFile> chi1 = new TreeItem<>(new IndvFile("c1"));
+        TreeItem<IndvFile> chi2 = new TreeItem<>(new IndvFile("c2"));
         par1.getChildren().setAll(chi1,chi2);
         tableView.setRoot(par1);
         tableView.refresh();
-        column.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<String, String>, ObservableValue<String>>() {
+        column.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<String, String> param) {
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
 
-                return new SimpleStringProperty(param.getValue().getValue());
+                return new SimpleStringProperty(param.getValue().getValue().getName());
             }
         });
     }
