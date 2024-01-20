@@ -7,6 +7,8 @@ public class IndvFile {
     String name = null;
     String type = null;
 
+    File encapsulatedFile = null;
+
 
 
     IndvFile(File representedFile)
@@ -20,6 +22,8 @@ public class IndvFile {
             String[] nameSegments = this.name.split("\\.");
             this.type = "." +  nameSegments[nameSegments.length - 1];
         }
+
+        this.encapsulatedFile = representedFile;
     }
 
     String getName()
@@ -30,7 +34,12 @@ public class IndvFile {
     {
         return this.type;
     }
-    File filePath = null;
+
+    File getEncapsulatedFile()
+    {
+        return encapsulatedFile;
+    }
+
 
 
 }

@@ -30,7 +30,7 @@ public class MainController {
 //        TreeItem<IndvFile> chi1 = new TreeItem<>(new IndvFile("c1"));
 //        TreeItem<IndvFile> chi2 = new TreeItem<>(new IndvFile("c2"));
 //        par1.getChildren().setAll(chi1,chi2);
-        tableView.setRoot(testFiles.singleLayerScoop());
+        tableView.setRoot(testFiles.singleLayerScoop(testFiles.getRootItem()));
         tableView.refresh();
         column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override

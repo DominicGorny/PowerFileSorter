@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class FileCollector {
 
+
     String parentPath = null;
     File parentFile = null;
 
     TreeItem<IndvFile> parentItem = null;
-    ArrayList<TreeItem<IndvFile>> allChildren = new ArrayList<>();
 
     FileCollector(String parentPath)
     {
@@ -21,17 +21,18 @@ public class FileCollector {
         this.parentItem = new TreeItem<IndvFile>(new IndvFile(this.parentFile));
     }
 
-    TreeItem<IndvFile> singleLayerScoop()
+    TreeItem<IndvFile> getRootItem()
     {
-        for (File file: parentFile.listFiles())
-        {
-            allChildren.add(new TreeItem<IndvFile>(new IndvFile(file)));
-        }
-        for (TreeItem<IndvFile> child: allChildren)
-        {
-            parentItem.getChildren().add(child);
-        }
         return parentItem;
+    }
+
+    TreeItem<IndvFile> singleLayerScoop(TreeItem<IndvFile> inputItem)
+    {
+        for (File file: inputItem.getValue().getEncapsulatedFile().listFiles())
+        {
+            inputItem.getChildren().add(new TreeItem<IndvFile>(new IndvFile(file)));
+        }
+        return inputItem;
     }
 
 
