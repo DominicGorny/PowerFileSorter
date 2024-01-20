@@ -15,13 +15,11 @@ public class MainController {
     @FXML
     private TreeTableView<IndvFile> tableView;
     @FXML
-    private TreeTableColumn<IndvFile,String> column;
+    private TreeTableColumn<IndvFile,String> column1;
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private TreeTableColumn<IndvFile,String> column2;
 
-    }
 
     void prepareTreeTable()
     {
@@ -34,12 +32,21 @@ public class MainController {
 //        par1.getChildren().setAll(chi1,chi2);
         tableView.setRoot(testFiles.singleLayerScoop());
         tableView.refresh();
-        column.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+        column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
 
                 return new SimpleStringProperty(param.getValue().getValue().getName());
             }
         });
+
+        column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
+
+                return new SimpleStringProperty(param.getValue().getValue().getType());
+            }
+        });
+
     }
 }

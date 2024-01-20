@@ -9,13 +9,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
             <TreeTableView fx:id="tableView" prefHeight="393.0" prefWidth="305.0">
               <columns>
-                <TreeTableColumn fx:id="column" prefWidth="75.0" text="Coloumn" />
+                <TreeTableColumn fx:id="column1" prefWidth="175.0" text="Items" />
+                  <TreeTableColumn fx:id="column2" prefWidth="114.0" text="Type" />
               </columns>
             </TreeTableView>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
