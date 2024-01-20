@@ -9,6 +9,11 @@ public class IndvFile {
         this.name = name;
     }
 
+    IndvFile(File representedFile)
+    {
+        this.name = representedFile.getName();
+    }
+
     String getName()
     {
         return this.name;

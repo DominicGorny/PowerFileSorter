@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.Callback;
 
+import java.io.File;
+
 public class MainController {
     @FXML
     private Label welcomeText;
@@ -23,11 +25,14 @@ public class MainController {
 
     void prepareTreeTable()
     {
-        TreeItem<IndvFile> par1 = new TreeItem<>(new IndvFile("p1"));
-        TreeItem<IndvFile> chi1 = new TreeItem<>(new IndvFile("c1"));
-        TreeItem<IndvFile> chi2 = new TreeItem<>(new IndvFile("c2"));
-        par1.getChildren().setAll(chi1,chi2);
-        tableView.setRoot(par1);
+        FileCollector testFiles = new FileCollector("/Users/kiwi4/Downloads/");
+
+
+//        TreeItem<IndvFile> par1 = new TreeItem<>(new IndvFile("p1"));
+//        TreeItem<IndvFile> chi1 = new TreeItem<>(new IndvFile("c1"));
+//        TreeItem<IndvFile> chi2 = new TreeItem<>(new IndvFile("c2"));
+//        par1.getChildren().setAll(chi1,chi2);
+        tableView.setRoot(testFiles.singleLayerScoop());
         tableView.refresh();
         column.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
