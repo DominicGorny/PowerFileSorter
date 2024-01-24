@@ -25,10 +25,14 @@ public class FileCollector {
     File parentFile = null;
 
     /**
-     * A Tree Iten holding an IndvFile object which encapsulates the parent file object
+     * A Tree Item holding an IndvFile object which encapsulates the parent file object
      */
     TreeItem<IndvFile> parentItem = null;
 
+    /**
+     * creates a file collector at the path passed in
+     * @param parentPath
+     */
     FileCollector(String parentPath)
     {
         this.parentPath = parentPath;
@@ -36,11 +40,20 @@ public class FileCollector {
         this.parentItem = new TreeItem<IndvFile>(new IndvFile(this.parentFile));
     }
 
+    /**
+     * gets the file collectors parent item
+     * @return parent item
+     */
     TreeItem<IndvFile> getRootItem()
     {
         return parentItem;
     }
 
+    /**
+     * Lists all files directly available in the folder encapsulated by the item passed in
+     * @param inputItem the folder passed in
+     * @return the folder as a tree item with all sub
+     */
     TreeItem<IndvFile> singleLayerScoop(TreeItem<IndvFile> inputItem)
     {
         for (File file: inputItem.getValue().getEncapsulatedFile().listFiles())
@@ -50,6 +63,13 @@ public class FileCollector {
         return inputItem;
     }
 
+    /**
+     * Lists all the files directly available in the folder encapsulated by the item
+     *  passed in as well as any folders and attaches them as children.
+     * @param inputItem the folder passed in
+     * @return the folder as a tree item with all items, sub-folders and items in folders attached as children
+     * in a representative hierarchy
+     */
     TreeItem<IndvFile> multiLayerScoop(TreeItem<IndvFile> inputItem)
     {
         for (File childFile: inputItem.getValue().getEncapsulatedFile().listFiles())
