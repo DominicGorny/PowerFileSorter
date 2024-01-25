@@ -1,4 +1,4 @@
-package com.example.powersorter.topLevelActions;
+package com.example.powersorter.actions.topLevelActions;
 
 import com.example.powersorter.IndvFile;
 import com.example.powersorter.onTreeClickCallback;
@@ -9,14 +9,14 @@ import javafx.scene.control.TreeItem;
  * necessarily translate to individual actions done on the computer.
  * This action class allows the user to move one file to another location.
  */
-public class topLevelMoveAction implements onTreeClickCallback {
+public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction {
     private TreeItem<IndvFile> fileToMove;
 
     /**
      * called when the user selects the first item to move
      * @param fileToMove the item to move
      */
-    public topLevelMoveAction(TreeItem<IndvFile> fileToMove)
+    public TopLevelMoveAction(TreeItem<IndvFile> fileToMove)
     {
         this.fileToMove = fileToMove;
     }
@@ -76,5 +76,10 @@ public class topLevelMoveAction implements onTreeClickCallback {
             return true;
         }
         return moveSafetyCheck(targetFile.getParent());
+    }
+
+    @Override
+    public boolean executeAction() {
+        return false;
     }
 }

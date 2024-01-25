@@ -1,18 +1,13 @@
 package com.example.powersorter;
 
-import com.example.powersorter.topLevelActions.topLevelMoveAction;
+import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
-import org.controlsfx.control.action.Action;
-
-import java.io.File;
 
 public class MainController {
 
@@ -48,7 +43,7 @@ public class MainController {
     @FXML
     void moveItem(ActionEvent event)
     {
-        topLevelMoveAction moveEvent = new topLevelMoveAction(tableView.getSelectionModel().getSelectedItem());
+        TopLevelMoveAction moveEvent = new TopLevelMoveAction(tableView.getSelectionModel().getSelectedItem());
         onClickAction = moveEvent;
     }
 
