@@ -13,7 +13,7 @@
    <center>
       <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <TreeTableView fx:id="tableView" prefHeight="393.0" prefWidth="305.0">
+            <TreeTableView fx:id="tableView" onMouseClicked="#treeClick" prefHeight="393.0" prefWidth="305.0">
               <columns>
                 <TreeTableColumn fx:id="column1" prefWidth="175.0" text="Items" />
                   <TreeTableColumn fx:id="column2" prefWidth="114.0" text="Type" />
@@ -21,7 +21,8 @@
             </TreeTableView>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="81.0" layoutY="199.0" mnemonicParsing="false" onAction="#testSelection" text="Button" />
+                  <Button layoutX="189.0" layoutY="359.0" mnemonicParsing="false" onAction="#testSelection" text="CheckSelected" />
+                  <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#moveItem" prefHeight="25.0" prefWidth="80.0" text="Move" />
                </children></AnchorPane>
          </items>
       </SplitPane>

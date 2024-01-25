@@ -32,6 +32,33 @@ public class MainController {
     @FXML
     private TreeTableColumn<IndvFile,String> column2;
 
+    /**
+     * Test event to check button selection
+     * @param event
+     */
+    @FXML
+    void testSelection(ActionEvent event)
+    {
+        System.out.println(tableView.getSelectionModel().getSelectedItem().getValue().getName());
+    }
+
+    @FXML
+    void moveItem(ActionEvent event)
+    {
+        System.out.println(tableView.getSelectionModel().getSelectedItem().getValue().getName());
+    }
+
+    @FXML
+    void treeClick(MouseEvent event)
+    {
+        System.out.println(tableView.getSelectionModel().getSelectedItem().getValue().getName());
+    }
+
+    /**
+     * An item that has been picked up with the pickup button
+     */
+    private TreeItem<IndvFile> carriedItem;
+
 
     /**
      * Prepares the content of the tree table view for display
@@ -40,7 +67,7 @@ public class MainController {
     {
         FileCollector testFiles = new FileCollector("/Users/kiwi4/Downloads/");
 
-
+        testFiles.getRootItem().setExpanded(true);
         tableView.setRoot(testFiles.multiLayerScoop(testFiles.getRootItem()));
         tableView.refresh();
         column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
@@ -62,15 +89,8 @@ public class MainController {
 
     }
 
-    /**
-     * Test event to check button selection
-     * @param event
-     */
-    @FXML
-    void testSelection(ActionEvent event)
-    {
-        System.out.println(tableView.getSelectionModel().getSelectedItem().getValue().getName());
-    }
+
+
 
 
 }
