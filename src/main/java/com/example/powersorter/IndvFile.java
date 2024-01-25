@@ -8,17 +8,17 @@ import java.util.List;
  */
 public class IndvFile {
 
-    String name = null;
-    String type = null;
+    private String name = null;
+    private String type = null;
 
-    File encapsulatedFile = null;
+    private File encapsulatedFile = null;
 
 
     /**
      * Constructor that builds and individual file class by using the information from a java file type object
      * @param representedFile the file that this object represents
      */
-    IndvFile(File representedFile)
+    public IndvFile(File representedFile)
     {
         this.name = representedFile.getName();
         if (representedFile.isDirectory())
@@ -37,7 +37,7 @@ public class IndvFile {
      * get File name
      * @return name
      */
-    String getName()
+    public String getName()
     {
         return this.name;
     }
@@ -46,7 +46,7 @@ public class IndvFile {
      * get the type of the file as a string
      * @return file type
      */
-    String getType()
+    public String getType()
     {
         return this.type;
     }
@@ -55,7 +55,7 @@ public class IndvFile {
      * return the actual file object that this class represents
      * @return Java File object
      */
-    File getEncapsulatedFile()
+    public File getEncapsulatedFile()
     {
         return encapsulatedFile;
     }
