@@ -1,5 +1,7 @@
 package com.example.powersorter;
 
+import com.example.powersorter.actions.ActionManager;
+import com.example.powersorter.actions.topLevelActions.HighLevelAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -11,7 +13,8 @@ import javafx.util.Callback;
 
 public class MainController {
 
-    private onTreeClickCallback onClickAction = null;
+    private onTreeClickCallback onClickFunction = null;
+    private HighLevelAction onClickAction = null;
 
     /**
      * The tree table view on the main window
@@ -37,22 +40,25 @@ public class MainController {
     @FXML
     void testSelection(ActionEvent event)
     {
-        System.out.println(tableView.getSelectionModel().getSelectedItem().getValue().getName());
+        ActionManager.getManager().executeAll();
     }
 
     @FXML
     void moveItem(ActionEvent event)
     {
         TopLevelMoveAction moveEvent = new TopLevelMoveAction(tableView.getSelectionModel().getSelectedItem());
+        onClickFunction = moveEvent;
         onClickAction = moveEvent;
     }
 
     @FXML
     void treeClick(MouseEvent event)
     {
-        if (!(onClickAction == null))
+        if (!(onClickFunction == null))
         {
-            onClickAction.clickCallback(tableView.getSelectionModel().getSelectedItem());
+            onClickFunction.clickCallback(tableView.getSelectionModel().getSelectedItem());
+            ActionManager.getManager().addAction(onClickAction);
+            onClickFunction = null;
             onClickAction = null;
         }
         tableView.refresh();

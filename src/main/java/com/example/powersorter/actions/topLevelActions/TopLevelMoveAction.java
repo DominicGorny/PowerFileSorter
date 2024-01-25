@@ -11,6 +11,7 @@ import javafx.scene.control.TreeItem;
  */
 public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction {
     private TreeItem<IndvFile> fileToMove;
+    private TreeItem<IndvFile> fileToTarget;
 
     /**
      * called when the user selects the first item to move
@@ -27,6 +28,7 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
      */
     public void clickCallback(TreeItem<IndvFile> targetFile)
     {
+        fileToTarget = targetFile;
         if (moveSafetyCheck(targetFile)) {
             updateTreeView(targetFile);
         }
@@ -42,10 +44,6 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
      */
     private void updateTreeView(TreeItem<IndvFile> targetFile)
     {
-        System.out.println("moving from");
-        System.out.println(this.fileToMove.getValue().getName());
-        System.out.println("to");
-        System.out.println(targetFile.getValue().getName());
 
         if (targetFile.getValue().getEncapsulatedFile().isDirectory())
         {
@@ -80,6 +78,10 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
 
     @Override
     public boolean executeAction() {
+        System.out.println("moving from");
+        System.out.println(this.fileToMove.getValue().getName());
+        System.out.println("to");
+        System.out.println(fileToTarget.getValue().getName());
         return false;
     }
 }

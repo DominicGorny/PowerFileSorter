@@ -19,7 +19,7 @@ public class ActionManager {
      * returns the actionManager and creates it if it does not exist
      * @return actionManager reference
      */
-    public ActionManager getManager()
+    public static ActionManager getManager()
     {
         if (appManager == null)
         {
@@ -31,6 +31,15 @@ public class ActionManager {
     public void addAction(HighLevelAction newAction)
     {
         actions.add(newAction);
+    }
+
+    public boolean executeAll()
+    {
+        for (HighLevelAction action: actions)
+        {
+            action.executeAction();
+        }
+        return true;
     }
 
 
