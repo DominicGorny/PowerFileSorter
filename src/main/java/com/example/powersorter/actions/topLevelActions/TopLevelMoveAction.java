@@ -28,7 +28,7 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
      */
     public void clickCallback(TreeItem<IndvFile> targetFile)
     {
-        fileToTarget = targetFile;
+
         if (moveSafetyCheck(targetFile)) {
             updateTreeView(targetFile);
         }
@@ -47,11 +47,13 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
 
         if (targetFile.getValue().getEncapsulatedFile().isDirectory())
         {
+            fileToTarget = targetFile.getParent();
             this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
             targetFile.getChildren().add(fileToMove);
         }
         else
         {
+            fileToTarget = targetFile;
             this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
             targetFile.getParent().getChildren().add(fileToMove);
         }
