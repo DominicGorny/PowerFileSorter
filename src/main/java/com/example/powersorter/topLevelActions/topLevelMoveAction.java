@@ -27,9 +27,54 @@ public class topLevelMoveAction implements onTreeClickCallback {
      */
     public void clickCallback(TreeItem<IndvFile> targetFile)
     {
+        if (moveSafetyCheck(targetFile)) {
+            updateTreeView(targetFile);
+        }
+        else
+        {
+            System.out.println("Failed Move safety check");
+        }
+    }
+
+    /**
+     * manages the ui effects of the move action
+     * @param targetFile the location where the fileToMove should be moved
+     */
+    private void updateTreeView(TreeItem<IndvFile> targetFile)
+    {
         System.out.println("moving from");
         System.out.println(this.fileToMove.getValue().getName());
         System.out.println("to");
         System.out.println(targetFile.getValue().getName());
+
+        if (targetFile.getValue().getEncapsulatedFile().isDirectory())
+        {
+            this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
+            targetFile.getChildren().add(fileToMove);
+        }
+        else
+        {
+            this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
+            targetFile.getParent().getChildren().add(fileToMove);
+        }
+    }
+
+    /**
+     * ensures that folders cannot be moved into their own subdirectories
+     * (because that just doesn't make sense)
+     * @param targetFile the location where the fileToMove should be moved
+     * @return true if the operation is safe, false if it is unsafe
+     */
+    private boolean moveSafetyCheck(TreeItem<IndvFile> targetFile)
+    {
+        if (targetFile == fileToMove)
+        {
+            return false;
+        }
+        if (targetFile.getParent() == null)
+        {
+            return true;
+        }
+        return moveSafetyCheck(targetFile.getParent());
     }
 }

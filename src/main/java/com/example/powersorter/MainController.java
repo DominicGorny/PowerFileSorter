@@ -60,6 +60,7 @@ public class MainController {
             onClickAction.clickCallback(tableView.getSelectionModel().getSelectedItem());
             onClickAction = null;
         }
+        tableView.refresh();
 
     }
 
