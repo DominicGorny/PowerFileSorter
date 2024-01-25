@@ -1,6 +1,7 @@
 package com.example.powersorter.actions.topLevelActions;
 
 import com.example.powersorter.IndvFile;
+import com.example.powersorter.actions.lowLevelActions.LowLevelMoveAction;
 import com.example.powersorter.onTreeClickCallback;
 import javafx.scene.control.TreeItem;
 
@@ -47,13 +48,13 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
 
         if (targetFile.getValue().getEncapsulatedFile().isDirectory())
         {
-            fileToTarget = targetFile.getParent();
+            fileToTarget = targetFile;
             this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
             targetFile.getChildren().add(fileToMove);
         }
         else
         {
-            fileToTarget = targetFile;
+            fileToTarget = targetFile.getParent();
             this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
             targetFile.getParent().getChildren().add(fileToMove);
         }
@@ -80,10 +81,7 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
 
     @Override
     public boolean executeAction() {
-        System.out.println("moving from");
-        System.out.println(this.fileToMove.getValue().getName());
-        System.out.println("to");
-        System.out.println(fileToTarget.getValue().getName());
-        return false;
+        LowLevelMoveAction lowLevelMove = new LowLevelMoveAction(fileToMove,fileToTarget);
+        return lowLevelMove.executeAction();
     }
 }
