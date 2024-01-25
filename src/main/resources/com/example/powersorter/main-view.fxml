@@ -19,7 +19,10 @@
                   <TreeTableColumn fx:id="column2" prefWidth="114.0" text="Type" />
               </columns>
             </TreeTableView>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="81.0" layoutY="199.0" mnemonicParsing="false" onAction="#testSelection" text="Button" />
+               </children></AnchorPane>
          </items>
       </SplitPane>
    </center>

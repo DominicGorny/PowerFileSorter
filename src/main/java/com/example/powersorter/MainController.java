@@ -2,9 +2,14 @@ package com.example.powersorter;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
+import org.controlsfx.control.action.Action;
 
 import java.io.File;
 
@@ -54,5 +59,18 @@ public class MainController {
             }
         });
 
+
     }
+
+    /**
+     * Test event to check button selection
+     * @param event
+     */
+    @FXML
+    void testSelection(ActionEvent event)
+    {
+        System.out.println(tableView.getSelectionModel().getSelectedItem().getValue().getName());
+    }
+
+
 }
