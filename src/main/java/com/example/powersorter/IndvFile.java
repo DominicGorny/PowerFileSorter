@@ -15,6 +15,14 @@ public class IndvFile {
 
 
     /**
+     * empty constructor
+     */
+    public IndvFile () {
+        this.name = "Not Available";
+        this.encapsulatedFile = null;
+        this.type = "Not available";
+    }
+    /**
      * Constructor that builds and individual file class by using the information from a java file type object
      * @param representedFile the file that this object represents
      */
@@ -60,6 +68,7 @@ public class IndvFile {
         return encapsulatedFile;
     }
 
-
-
+    public void setName(String name) {
+        this.name = name;
+    }
 }

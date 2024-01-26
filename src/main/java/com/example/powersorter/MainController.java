@@ -9,12 +9,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 import javafx.util.Callback;
+
+import java.io.File;
 
 public class MainController {
 
     private onTreeClickCallback onClickFunction = null;
     private HighLevelAction onClickAction = null;
+
+    private Window parentWindow;
+
 
     /**
      * The tree table view on the main window
@@ -52,6 +60,18 @@ public class MainController {
     }
 
     @FXML
+    void openFile(ActionEvent event)
+    {
+        DirectoryChooser directoryPicker = new DirectoryChooser();
+        File upperDirectory = directoryPicker.showDialog(parentWindow);
+        FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
+        newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
+        tableView.setRoot(newFileDirectory.parentItem);
+        tableView.refresh();
+
+    }
+
+    @FXML
     void treeClick(MouseEvent event)
     {
         if (!(onClickFunction == null))
@@ -70,17 +90,23 @@ public class MainController {
      */
     private TreeItem<IndvFile> carriedItem;
 
+    public void setParentWindow(Window parentWindow) {
+        this.parentWindow = parentWindow;
+    }
 
     /**
      * Prepares the content of the tree table view for display
      */
     void prepareTreeTable()
     {
-        FileCollector testFiles = new FileCollector("/Users/kiwi4/Downloads/");
+//        FileCollector testFiles = new FileCollector("/Users/kiwi4/Downloads/");
+//
+//        testFiles.getRootItem().setExpanded(true);
+//        tableView.setRoot(testFiles.multiLayerScoop(testFiles.getRootItem()));
 
-        testFiles.getRootItem().setExpanded(true);
-        tableView.setRoot(testFiles.multiLayerScoop(testFiles.getRootItem()));
         tableView.refresh();
+
+
         column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
