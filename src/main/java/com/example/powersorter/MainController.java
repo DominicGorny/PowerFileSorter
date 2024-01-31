@@ -24,7 +24,7 @@ public class MainController {
 
 
     /**
-     * The tree table view on the main window
+     * The tree table view on the main window, t1 and all its columns refer to the original data source
      */
     @FXML
     private TreeTableView<IndvFile> t1tableView;
@@ -41,7 +41,7 @@ public class MainController {
     private TreeTableColumn<IndvFile,String> t1column2;
 
     /**
-     * The tree table view on the main window
+     * The tree table view on the main window , t2 and all its columns refer to the data destination
      */
     @FXML
     private TreeTableView<IndvFile> t2tableView;
