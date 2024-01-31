@@ -23,18 +23,18 @@
       </SplitPane>
    </center>
    <left>
-      <TreeTableView fx:id="tableView" onMouseClicked="#treeClick" prefHeight="393.0" prefWidth="305.0" BorderPane.alignment="CENTER">
+      <TreeTableView fx:id="t1tableView" onMouseClicked="#treeClick" prefHeight="393.0" prefWidth="305.0" BorderPane.alignment="CENTER">
         <columns>
-          <TreeTableColumn fx:id="column1" prefWidth="175.0" text="Items" />
-            <TreeTableColumn fx:id="column2" prefWidth="114.0" text="Type" />
+          <TreeTableColumn fx:id="t1column1" prefWidth="175.0" text="Items" />
+            <TreeTableColumn fx:id="t1column2" prefWidth="114.0" text="Type" />
         </columns>
       </TreeTableView>
    </left>
    <right>
-      <TreeTableView prefHeight="480.0" prefWidth="314.0" BorderPane.alignment="CENTER">
+      <TreeTableView fx:id="t2tableView" prefHeight="480.0" prefWidth="314.0" BorderPane.alignment="CENTER">
         <columns>
-          <TreeTableColumn prefWidth="75.0" text="Items" />
-            <TreeTableColumn prefWidth="75.0" text="Type" />
+          <TreeTableColumn fx:id="t2column1" prefWidth="75.0" text="Items" />
+            <TreeTableColumn fx:id="t2column2" prefWidth="75.0" text="Type" />
         </columns>
       </TreeTableView>
    </right>

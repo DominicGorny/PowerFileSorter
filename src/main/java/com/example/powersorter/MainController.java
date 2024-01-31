@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import javafx.util.Callback;
 
@@ -28,18 +27,36 @@ public class MainController {
      * The tree table view on the main window
      */
     @FXML
-    private TreeTableView<IndvFile> tableView;
+    private TreeTableView<IndvFile> t1tableView;
     /**
      * the file name column
      */
     @FXML
-    private TreeTableColumn<IndvFile,String> column1;
+    private TreeTableColumn<IndvFile,String> t1column1;
 
     /**
      * the File Type column
      */
     @FXML
-    private TreeTableColumn<IndvFile,String> column2;
+    private TreeTableColumn<IndvFile,String> t1column2;
+
+    /**
+     * The tree table view on the main window
+     */
+    @FXML
+    private TreeTableView<IndvFile> t2tableView;
+    /**
+     * the file name column
+     */
+    @FXML
+    private TreeTableColumn<IndvFile,String> t2column1;
+
+    /**
+     * the File Type column
+     */
+    @FXML
+    private TreeTableColumn<IndvFile,String> t2column2;
+
 
     /**
      * Test event to check button selection
@@ -54,7 +71,7 @@ public class MainController {
     @FXML
     void moveItem(ActionEvent event)
     {
-        TopLevelMoveAction moveEvent = new TopLevelMoveAction(tableView.getSelectionModel().getSelectedItem());
+        TopLevelMoveAction moveEvent = new TopLevelMoveAction(t1tableView.getSelectionModel().getSelectedItem());
         onClickFunction = moveEvent;
         onClickAction = moveEvent;
     }
@@ -66,8 +83,10 @@ public class MainController {
         File upperDirectory = directoryPicker.showDialog(parentWindow);
         FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
         newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
-        tableView.setRoot(newFileDirectory.parentItem);
-        tableView.refresh();
+        t1tableView.setRoot(newFileDirectory.parentItem);
+        t1tableView.refresh();
+        t2tableView.setRoot(newFileDirectory.parentItem);
+        t2tableView.refresh();
 
     }
 
@@ -76,12 +95,12 @@ public class MainController {
     {
         if (!(onClickFunction == null))
         {
-            onClickFunction.clickCallback(tableView.getSelectionModel().getSelectedItem());
+            onClickFunction.clickCallback(t1tableView.getSelectionModel().getSelectedItem());
             ActionManager.getManager().addAction(onClickAction);
             onClickFunction = null;
             onClickAction = null;
         }
-        tableView.refresh();
+        t1tableView.refresh();
 
     }
 
@@ -104,10 +123,11 @@ public class MainController {
 //        testFiles.getRootItem().setExpanded(true);
 //        tableView.setRoot(testFiles.multiLayerScoop(testFiles.getRootItem()));
 
-        tableView.refresh();
+        t1tableView.refresh();
+        t2tableView.refresh();
 
 
-        column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+        t1column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
 
@@ -115,7 +135,23 @@ public class MainController {
             }
         });
 
-        column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+        t1column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
+
+                return new SimpleStringProperty(param.getValue().getValue().getType());
+            }
+        });
+
+        t2column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
+
+                return new SimpleStringProperty(param.getValue().getValue().getName());
+            }
+        });
+
+        t2column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
 
