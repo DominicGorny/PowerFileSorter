@@ -23,6 +23,8 @@ public class MainController {
     private TreeItem<IndvFile> mockOriginParentItem;
     private TreeItem<IndvFile> mockDestinationParentItem;
 
+    private int focusedTree;
+
 
     /**
      * The tree table view on the main window, t1 and all its columns refer to the original data source
@@ -72,7 +74,14 @@ public class MainController {
     @FXML
     void moveItem(ActionEvent event)
     {
-        TopLevelMoveAction moveEvent = new TopLevelMoveAction(t1tableView.getSelectionModel().getSelectedItem());
+        TopLevelMoveAction moveEvent;
+        if (focusedTree == 1) {
+            moveEvent = new TopLevelMoveAction(t1tableView.getSelectionModel().getSelectedItem());
+        }
+        else
+        {
+            moveEvent = new TopLevelMoveAction(t2tableView.getSelectionModel().getSelectedItem());
+        }
         onClickFunction = moveEvent;
         onClickAction = moveEvent;
     }
@@ -128,8 +137,9 @@ public class MainController {
 
 
     @FXML
-    void treeClick(MouseEvent event)
+    void t1treeClick(MouseEvent event)
     {
+        focusedTree = 1;
         if (!(onClickFunction == null))
         {
             onClickFunction.clickCallback(t1tableView.getSelectionModel().getSelectedItem());
@@ -138,6 +148,20 @@ public class MainController {
             onClickAction = null;
         }
         t1tableView.refresh();
+
+    }
+    @FXML
+    void t2treeClick(MouseEvent event)
+    {
+        focusedTree = 2;
+        if (!(onClickFunction == null))
+        {
+            onClickFunction.clickCallback(t2tableView.getSelectionModel().getSelectedItem());
+            ActionManager.getManager().addAction(onClickAction);
+            onClickFunction = null;
+            onClickAction = null;
+        }
+        t2tableView.refresh();
 
     }
 

@@ -24,7 +24,7 @@
       </SplitPane>
    </center>
    <left>
-      <TreeTableView fx:id="t1tableView" onMouseClicked="#treeClick" prefHeight="393.0" prefWidth="305.0" BorderPane.alignment="CENTER">
+      <TreeTableView fx:id="t1tableView" onMouseClicked="#t1treeClick" prefHeight="393.0" prefWidth="305.0" BorderPane.alignment="CENTER">
         <columns>
           <TreeTableColumn fx:id="t1column1" prefWidth="175.0" text="Items" />
             <TreeTableColumn fx:id="t1column2" prefWidth="114.0" text="Type" />
@@ -32,7 +32,7 @@
       </TreeTableView>
    </left>
    <right>
-      <TreeTableView fx:id="t2tableView" prefHeight="480.0" prefWidth="314.0" BorderPane.alignment="CENTER">
+      <TreeTableView fx:id="t2tableView" onMouseClicked="#t2treeClick" prefHeight="480.0" prefWidth="314.0" BorderPane.alignment="CENTER">
         <columns>
           <TreeTableColumn fx:id="t2column1" prefWidth="124.0" text="Items" />
             <TreeTableColumn fx:id="t2column2" minWidth="0.0" prefWidth="90.0" text="Type" />
