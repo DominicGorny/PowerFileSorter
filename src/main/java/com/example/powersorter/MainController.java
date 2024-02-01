@@ -19,8 +19,9 @@ public class MainController {
 
     private onTreeClickCallback onClickFunction = null;
     private HighLevelAction onClickAction = null;
-
     private Window parentWindow;
+    private TreeItem<IndvFile> mockOriginParentItem;
+    private TreeItem<IndvFile> mockDestinationParentItem;
 
 
     /**
@@ -77,18 +78,54 @@ public class MainController {
     }
 
     @FXML
-    void openFile(ActionEvent event)
+    void openSourceFile(ActionEvent event)
     {
+
+
         DirectoryChooser directoryPicker = new DirectoryChooser();
         File upperDirectory = directoryPicker.showDialog(parentWindow);
         FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
         newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
-        t1tableView.setRoot(newFileDirectory.parentItem);
-        t1tableView.refresh();
-        t2tableView.setRoot(newFileDirectory.parentItem);
-        t2tableView.refresh();
 
+        if (mockOriginParentItem == null)
+        {
+            mockOriginParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
+            mockOriginParentItem.getChildren().add(newFileDirectory.parentItem);
+            mockOriginParentItem.getValue().setName("Origin");
+            t1tableView.setRoot(mockOriginParentItem);
+        }
+        else
+        {
+            mockOriginParentItem.getChildren().add(newFileDirectory.parentItem);
+        }
+        t1tableView.refresh();
     }
+
+    @FXML
+    void openDestinationFile(ActionEvent event)
+    {
+
+
+        DirectoryChooser directoryPicker = new DirectoryChooser();
+        File upperDirectory = directoryPicker.showDialog(parentWindow);
+        FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
+        newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
+
+        if (mockDestinationParentItem == null)
+        {
+            mockDestinationParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
+            mockDestinationParentItem.getChildren().add(newFileDirectory.parentItem);
+            mockDestinationParentItem.getValue().setName("Destination");
+            t2tableView.setRoot(mockDestinationParentItem);
+        }
+        else
+        {
+            mockDestinationParentItem.getChildren().add(newFileDirectory.parentItem);
+        }
+        t2tableView.refresh();
+    }
+
+
 
     @FXML
     void treeClick(MouseEvent event)
