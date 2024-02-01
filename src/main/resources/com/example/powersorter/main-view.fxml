@@ -13,12 +13,12 @@
    <center>
       <SplitPane prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <items>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="478.0" prefWidth="233.0">
                <children>
-                  <Button layoutX="8.0" layoutY="95.0" mnemonicParsing="false" onAction="#testSelection" text="CheckSelected" />
-                  <Button layoutX="14.0" layoutY="58.0" mnemonicParsing="false" onAction="#moveItem" prefHeight="25.0" prefWidth="80.0" text="Move" />
-                  <Button layoutX="8.0" layoutY="14.0" mnemonicParsing="false" onAction="#openSourceFile" text="FilePicker" />
-                  <Button layoutX="83.0" layoutY="14.0" mnemonicParsing="false" onAction="#openDestinationFile" text="FilePicker" />
+                  <Button layoutX="50.0" layoutY="174.0" mnemonicParsing="false" onAction="#testSelection" text="CheckSelected" />
+                  <Button layoutX="56.0" layoutY="131.0" mnemonicParsing="false" onAction="#moveItem" prefHeight="25.0" prefWidth="80.0" text="Move" />
+                  <Button layoutX="16.0" layoutY="39.0" mnemonicParsing="false" onAction="#openSourceFile" text="OriginPicker" />
+                  <Button layoutX="57.0" layoutY="14.0" mnemonicParsing="false" onAction="#openDestinationFile" text="DestinationPicker" />
                </children></AnchorPane>
          </items>
       </SplitPane>
