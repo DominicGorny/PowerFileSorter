@@ -20,45 +20,24 @@ public class MainController {
     private onTreeClickCallback onClickFunction = null;
     private HighLevelAction onClickAction = null;
     private Window parentWindow;
-    private TreeItem<IndvFile> mockOriginParentItem;
-    private TreeItem<IndvFile> mockDestinationParentItem;
-
-    private int focusedTree;
-
+    private TreeItem<IndvFile> mockParentItem;
 
     /**
      * The tree table view on the main window, t1 and all its columns refer to the original data source
      */
     @FXML
-    private TreeTableView<IndvFile> t1tableView;
+    private TreeTableView<IndvFile> tableView;
     /**
      * the file name column
      */
     @FXML
-    private TreeTableColumn<IndvFile,String> t1column1;
+    private TreeTableColumn<IndvFile,String> column1;
 
     /**
      * the File Type column
      */
     @FXML
-    private TreeTableColumn<IndvFile,String> t1column2;
-
-    /**
-     * The tree table view on the main window , t2 and all its columns refer to the data destination
-     */
-    @FXML
-    private TreeTableView<IndvFile> t2tableView;
-    /**
-     * the file name column
-     */
-    @FXML
-    private TreeTableColumn<IndvFile,String> t2column1;
-
-    /**
-     * the File Type column
-     */
-    @FXML
-    private TreeTableColumn<IndvFile,String> t2column2;
+    private TreeTableColumn<IndvFile,String> column2;
 
 
     /**
@@ -75,13 +54,7 @@ public class MainController {
     void moveItem(ActionEvent event)
     {
         TopLevelMoveAction moveEvent;
-        if (focusedTree == 1) {
-            moveEvent = new TopLevelMoveAction(t1tableView.getSelectionModel().getSelectedItem());
-        }
-        else
-        {
-            moveEvent = new TopLevelMoveAction(t2tableView.getSelectionModel().getSelectedItem());
-        }
+        moveEvent = new TopLevelMoveAction(tableView.getSelectionModel().getSelectedItem());
         onClickFunction = moveEvent;
         onClickAction = moveEvent;
     }
@@ -96,74 +69,35 @@ public class MainController {
         FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
         newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
 
-        if (mockOriginParentItem == null)
+        if (mockParentItem == null)
         {
-            mockOriginParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
-            mockOriginParentItem.getChildren().add(newFileDirectory.parentItem);
-            mockOriginParentItem.getValue().setName("Origin");
-            t1tableView.setRoot(mockOriginParentItem);
+            mockParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
+            mockParentItem.getChildren().add(newFileDirectory.parentItem);
+            mockParentItem.getValue().setName("Origin");
+            tableView.setRoot(mockParentItem);
         }
         else
         {
-            mockOriginParentItem.getChildren().add(newFileDirectory.parentItem);
+            mockParentItem.getChildren().add(newFileDirectory.parentItem);
         }
-        t1tableView.refresh();
-    }
-
-    @FXML
-    void openDestinationFile(ActionEvent event)
-    {
-
-
-        DirectoryChooser directoryPicker = new DirectoryChooser();
-        File upperDirectory = directoryPicker.showDialog(parentWindow);
-        FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
-        newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
-
-        if (mockDestinationParentItem == null)
-        {
-            mockDestinationParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
-            mockDestinationParentItem.getChildren().add(newFileDirectory.parentItem);
-            mockDestinationParentItem.getValue().setName("Destination");
-            t2tableView.setRoot(mockDestinationParentItem);
-        }
-        else
-        {
-            mockDestinationParentItem.getChildren().add(newFileDirectory.parentItem);
-        }
-        t2tableView.refresh();
+        tableView.refresh();
     }
 
 
-
     @FXML
-    void t1treeClick(MouseEvent event)
+    void treeClick(MouseEvent event)
     {
-        focusedTree = 1;
         if (!(onClickFunction == null))
         {
-            onClickFunction.clickCallback(t1tableView.getSelectionModel().getSelectedItem());
+            onClickFunction.clickCallback(tableView.getSelectionModel().getSelectedItem());
             ActionManager.getManager().addAction(onClickAction);
             onClickFunction = null;
             onClickAction = null;
         }
-        t1tableView.refresh();
+        tableView.refresh();
 
     }
-    @FXML
-    void t2treeClick(MouseEvent event)
-    {
-        focusedTree = 2;
-        if (!(onClickFunction == null))
-        {
-            onClickFunction.clickCallback(t2tableView.getSelectionModel().getSelectedItem());
-            ActionManager.getManager().addAction(onClickAction);
-            onClickFunction = null;
-            onClickAction = null;
-        }
-        t2tableView.refresh();
 
-    }
 
     /**
      * An item that has been picked up with the pickup button
@@ -184,11 +118,10 @@ public class MainController {
 //        testFiles.getRootItem().setExpanded(true);
 //        tableView.setRoot(testFiles.multiLayerScoop(testFiles.getRootItem()));
 
-        t1tableView.refresh();
-        t2tableView.refresh();
+        tableView.refresh();
 
 
-        t1column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+        column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
 
@@ -196,23 +129,7 @@ public class MainController {
             }
         });
 
-        t1column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
-
-                return new SimpleStringProperty(param.getValue().getValue().getType());
-            }
-        });
-
-        t2column1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
-
-                return new SimpleStringProperty(param.getValue().getValue().getName());
-            }
-        });
-
-        t2column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
+        column2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<IndvFile, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<IndvFile, String> param) {
 
