@@ -10,24 +10,27 @@
 <?import javafx.scene.control.Button?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <SplitPane prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <items>
-            <AnchorPane prefHeight="478.0" prefWidth="250.0">
-               <children>
-                  <Button layoutX="317.0" layoutY="192.0" mnemonicParsing="false" onAction="#testSelection" text="CheckSelected" />
-                  <Button layoutX="324.0" layoutY="134.0" mnemonicParsing="false" onAction="#moveItem" prefHeight="25.0" prefWidth="80.0" text="Move" />
-                  <Button layoutX="324.0" layoutY="72.0" mnemonicParsing="false" onAction="#openSourceFile" text="OriginPicker" />
-               </children></AnchorPane>
-         </items>
-      </SplitPane>
-   </center>
    <left>
-      <TreeTableView fx:id="tableView" onMouseClicked="#treeClick" prefHeight="393.0" prefWidth="305.0" BorderPane.alignment="CENTER">
+      <TreeTableView fx:id="tableView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#treeClick" prefHeight="480.0" prefWidth="556.0" BorderPane.alignment="CENTER">
         <columns>
           <TreeTableColumn fx:id="column1" prefWidth="175.0" text="Items" />
-            <TreeTableColumn fx:id="column2" prefWidth="114.0" text="Type" />
+            <TreeTableColumn fx:id="column2" prefWidth="155.0" text="Type" />
         </columns>
       </TreeTableView>
    </left>
+   <right>
+      <AnchorPane prefHeight="100.0" prefWidth="44.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="14.0" layoutY="404.0" mnemonicParsing="false" onAction="#testSelection" text="Debug Text" />
+            <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#moveItem" prefHeight="25.0" prefWidth="127.0" text="Move Selected Item" />
+         </children>
+      </AnchorPane>
+   </right>
+   <top>
+      <AnchorPane prefHeight="37.0" prefWidth="786.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#openSourceFile" text="Open Folder" />
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

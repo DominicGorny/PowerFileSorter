@@ -74,6 +74,7 @@ public class MainController {
             mockParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
             mockParentItem.getChildren().add(newFileDirectory.parentItem);
             mockParentItem.getValue().setName("Origin");
+            mockParentItem.setExpanded(true);
             tableView.setRoot(mockParentItem);
         }
         else
