@@ -2,6 +2,7 @@ package com.example.powersorter;
 
 import com.example.powersorter.actions.ActionManager;
 import com.example.powersorter.actions.topLevelActions.TopLevelAction;
+import com.example.powersorter.actions.topLevelActions.TopLevelCreateBasicFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelDissolveFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
 import javafx.beans.property.SimpleStringProperty;
@@ -76,6 +77,17 @@ public class MainController {
     }
 
     /**
+     * the on button click event for making a new vanilla folder
+     * @param event
+     */
+    @FXML
+    void makeBasicFolder(ActionEvent event)
+    {
+        TopLevelCreateBasicFolderAction basicFolderAction = new TopLevelCreateBasicFolderAction("New_Folder",
+                tableView.getSelectionModel().getSelectedItem());
+    }
+
+    /**
      * the on button click event for open a file
      * @param event
      */
@@ -121,7 +133,7 @@ public class MainController {
             System.out.println("only top level directories (the ones you chose with the open action) can be closed");
         }
 
-        //remove mock parent on empoty origin list so that the table shows "no contents"
+        //remove mock parent on empty origin list so that the table shows "no contents"
         if (mockParentItem.getChildren().isEmpty())
         {
             tableView.setRoot(null);
