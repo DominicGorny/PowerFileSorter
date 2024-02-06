@@ -34,6 +34,14 @@ public class TopLevelDissolveFolderAction implements TopLevelAction {
             System.out.println("Illegal Dissolve action");
             return;
         }
+        // does not allow the user to dissolve the first actual folder
+        //to stop them from just dumping files in top level directories.
+        if (folderToDissolve.getParent().getValue().isMock())
+        {
+            actionValid = false;
+            System.out.println("Illegal Dissolve action");
+            return;
+        }
         if (!folderToDissolve.getValue().getEncapsulatedFile().isDirectory())
         {
             actionValid = false;
