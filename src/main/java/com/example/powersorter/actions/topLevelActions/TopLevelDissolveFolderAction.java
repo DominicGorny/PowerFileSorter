@@ -31,7 +31,7 @@ public class TopLevelDissolveFolderAction implements TopLevelAction {
         if (folderToDissolve.getValue().isMock())
         {
             actionValid = false;
-            System.out.println("Illegal Dissolve action");
+            System.out.println("Illegal Dissolve action: can't dissolve mock folders");
             return;
         }
         // does not allow the user to dissolve the first actual folder
@@ -39,13 +39,13 @@ public class TopLevelDissolveFolderAction implements TopLevelAction {
         if (folderToDissolve.getParent().getValue().isMock())
         {
             actionValid = false;
-            System.out.println("Illegal Dissolve action");
+            System.out.println("Illegal Dissolve action: can't dissolve top level folder");
             return;
         }
         if (!folderToDissolve.getValue().getEncapsulatedFile().isDirectory())
         {
             actionValid = false;
-            System.out.println("Illegal Dissolve action");
+            System.out.println("Illegal Dissolve action: Item selected is not a folder");
             return;
         }
 
