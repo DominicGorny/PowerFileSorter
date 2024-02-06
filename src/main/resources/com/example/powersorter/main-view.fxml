@@ -23,7 +23,7 @@
          <children>
             <Button layoutX="14.0" layoutY="404.0" mnemonicParsing="false" onAction="#testSelection" text="Debug Text" />
             <Button layoutX="7.0" layoutY="14.0" mnemonicParsing="false" onAction="#moveItem" prefHeight="25.0" prefWidth="127.0" text="Move Selected Item" />
-            <Button layoutX="7.0" layoutY="49.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Dissolve Folder" />
+            <Button layoutX="7.0" layoutY="49.0" mnemonicParsing="false" onAction="#dissolveFolder" prefHeight="25.0" prefWidth="127.0" text="Dissolve Folder" />
             <Button layoutX="6.0" layoutY="84.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Button" textFill="#0000005e" />
             <Button layoutX="6.0" layoutY="118.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Button" textFill="#0000005e" />
             <Button layoutX="6.0" layoutY="220.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Button" textFill="#0000005e" />

@@ -10,9 +10,11 @@ import javafx.scene.control.TreeItem;
  * necessarily translate to individual actions done on the computer.
  * This action class allows the user to move one file to another location.
  */
-public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction {
+public class TopLevelMoveAction implements onTreeClickCallback, TopLevelAction {
     private TreeItem<IndvFile> fileToMove;
     private TreeItem<IndvFile> fileToTarget;
+
+    boolean actionValid = true;
 
     /**
      * called when the user selects the first item to move
@@ -36,6 +38,7 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
         else
         {
             System.out.println("Failed Move safety check");
+            actionValid = false;
         }
     }
 
@@ -83,5 +86,10 @@ public class TopLevelMoveAction implements onTreeClickCallback, HighLevelAction 
     public boolean executeAction() {
         LowLevelMoveAction lowLevelMove = new LowLevelMoveAction(fileToMove,fileToTarget);
         return lowLevelMove.executeAction();
+    }
+
+    @Override
+    public boolean getActionValid() {
+        return actionValid;
     }
 }

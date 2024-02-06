@@ -1,7 +1,6 @@
 package com.example.powersorter.actions;
 
-import com.example.powersorter.actions.lowLevelActions.LowLevelAction;
-import com.example.powersorter.actions.topLevelActions.HighLevelAction;
+import com.example.powersorter.actions.topLevelActions.TopLevelAction;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ import java.util.ArrayList;
  */
 public class ActionManager {
 
-    private ArrayList<HighLevelAction> actions = new ArrayList<>();
+    private ArrayList<TopLevelAction> actions = new ArrayList<>();
     private static ActionManager appManager = null;
 
     /**
@@ -28,14 +27,14 @@ public class ActionManager {
         return appManager;
     }
 
-    public void addAction(HighLevelAction newAction)
+    public void addAction(TopLevelAction newAction)
     {
         actions.add(newAction);
     }
 
     public boolean executeAll()
     {
-        for (HighLevelAction action: actions)
+        for (TopLevelAction action: actions)
         {
             action.executeAction();
         }

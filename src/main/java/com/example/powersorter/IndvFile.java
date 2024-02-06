@@ -11,6 +11,11 @@ public class IndvFile {
     private String name = null;
     private String type = null;
 
+    /**
+     * Describes wether this file encapsulated file is meant to be read or is just a mock for the tree graph root
+     */
+    private boolean isMock = false;
+
     private File encapsulatedFile = null;
 
 
@@ -70,5 +75,13 @@ public class IndvFile {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setMock(boolean mock) {
+        isMock = mock;
+    }
+
+    public boolean isMock() {
+        return isMock;
     }
 }

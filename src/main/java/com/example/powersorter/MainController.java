@@ -1,7 +1,8 @@
 package com.example.powersorter;
 
 import com.example.powersorter.actions.ActionManager;
-import com.example.powersorter.actions.topLevelActions.HighLevelAction;
+import com.example.powersorter.actions.topLevelActions.TopLevelAction;
+import com.example.powersorter.actions.topLevelActions.TopLevelDissolveFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -18,7 +19,7 @@ import java.io.File;
 public class MainController {
 
     private onTreeClickCallback onClickFunction = null;
-    private HighLevelAction onClickAction = null;
+    private TopLevelAction onClickAction = null;
     private Window parentWindow;
     private TreeItem<IndvFile> mockParentItem;
 
@@ -50,6 +51,10 @@ public class MainController {
         ActionManager.getManager().executeAll();
     }
 
+    /**
+     * the on button click event for moving an item on the table view
+     * @param event
+     */
     @FXML
     void moveItem(ActionEvent event)
     {
@@ -59,6 +64,21 @@ public class MainController {
         onClickAction = moveEvent;
     }
 
+    /**
+     * the on button click event for dissolving a folder
+     * @param event
+     */
+    @FXML
+    void dissolveFolder(ActionEvent event)
+    {
+        TopLevelDissolveFolderAction folderAction = new  TopLevelDissolveFolderAction(tableView.getSelectionModel().getSelectedItem());
+        tableView.refresh();
+    }
+
+    /**
+     * the on button click event for open a file
+     * @param event
+     */
     @FXML
     void openSourceFile(ActionEvent event)
     {
@@ -75,6 +95,7 @@ public class MainController {
             mockParentItem.getChildren().add(newFileDirectory.parentItem);
             mockParentItem.getValue().setName("Origin");
             mockParentItem.setExpanded(true);
+            mockParentItem.getValue().setMock(true);
             tableView.setRoot(mockParentItem);
         }
         else
@@ -85,6 +106,11 @@ public class MainController {
     }
 
 
+    /**
+     * action event function that is triggered if the user clicks on any item in the tree.
+     * Is used for actions thqat require multiple inputs e.g for the move action where multiple files are chosen,
+     * @param event
+     */
     @FXML
     void treeClick(MouseEvent event)
     {
@@ -96,14 +122,10 @@ public class MainController {
             onClickAction = null;
         }
         tableView.refresh();
-
     }
 
 
-    /**
-     * An item that has been picked up with the pickup button
-     */
-    private TreeItem<IndvFile> carriedItem;
+
 
     public void setParentWindow(Window parentWindow) {
         this.parentWindow = parentWindow;
