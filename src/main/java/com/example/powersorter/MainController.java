@@ -105,6 +105,34 @@ public class MainController {
         tableView.refresh();
     }
 
+    /**
+     * allows the user to close a top level directory they have opened
+     * @param event
+     */
+    @FXML
+    void closeSourceFile(ActionEvent event)
+    {
+        if(mockParentItem.getChildren().contains(tableView.getSelectionModel().getSelectedItem()))
+        {
+            mockParentItem.getChildren().remove(tableView.getSelectionModel().getSelectedItem());
+        }
+        else
+        {
+            System.out.println("only top level directories (the ones you chose with the open action) can be closed");
+        }
+
+        //remove mock parent on empoty origin list so that the table shows "no contents"
+        if (mockParentItem.getChildren().isEmpty())
+        {
+            tableView.setRoot(null);
+            mockParentItem = null;
+        }
+
+        tableView.refresh();
+
+
+
+    }
 
     /**
      * action event function that is triggered if the user clicks on any item in the tree.

@@ -40,7 +40,7 @@
       <AnchorPane prefHeight="37.0" prefWidth="786.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#openSourceFile" text="Open Folder" />
-            <Button layoutX="109.0" layoutY="5.0" mnemonicParsing="false" text="Close Folder" />
+            <Button layoutX="109.0" layoutY="5.0" mnemonicParsing="false" onAction="#closeSourceFile" text="Close Folder" />
          </children>
       </AnchorPane>
    </top>
