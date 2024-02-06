@@ -31,13 +31,16 @@ public class TopLevelDissolveFolderAction implements TopLevelAction {
         if (folderToDissolve.getValue().isMock())
         {
             actionValid = false;
+            System.out.println("Illegal Dissolve action");
             return;
         }
         if (!folderToDissolve.getValue().getEncapsulatedFile().isDirectory())
         {
             actionValid = false;
+            System.out.println("Illegal Dissolve action");
             return;
         }
+
         actionFolder = folderToDissolve;
         updateTree();
 
