@@ -24,6 +24,8 @@ public class MainController {
     private Window parentWindow;
     private TreeItem<IndvFile> mockParentItem;
 
+    private MainApplication mainApplication;
+
     /**
      * The tree table view on the main window, t1 and all its columns refer to the original data source
      */
@@ -41,6 +43,11 @@ public class MainController {
     @FXML
     private TreeTableColumn<IndvFile,String> column2;
 
+    public MainController (MainApplication MainApp)
+    {
+        mainApplication = MainApp;
+    }
+
 
     /**
      * Test event to check button selection
@@ -49,7 +56,8 @@ public class MainController {
     @FXML
     void testSelection(ActionEvent event)
     {
-        ActionManager.getManager().executeAll();
+        System.out.println("changing view");
+       mainApplication.folderView();
     }
 
     /**
@@ -163,6 +171,7 @@ public class MainController {
         }
         tableView.refresh();
     }
+
 
 
 

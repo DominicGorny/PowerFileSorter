@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+  <tabs>
+    <Tab text="Basic Folder">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
+                  <TextField layoutX="121.0" layoutY="39.0" promptText="Folder Name" />
+                  <Button layoutX="276.0" layoutY="39.0" mnemonicParsing="false" text="Create" />
+               </children>
+            </Pane>
+         </content></Tab>
+    <Tab text="Filter Folder">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
+                  <Button layoutX="149.0" layoutY="39.0" mnemonicParsing="false" text="Create" />
+                  <TextField layoutX="209.0" layoutY="39.0" promptText="Folder Name" />
+                  <DatePicker layoutX="14.0" layoutY="76.0" />
+                  <DatePicker layoutX="339.0" layoutY="76.0" />
+                  <Label layoutX="216.0" layoutY="80.0" text="Created Between" />
+                  <Label layoutX="200.0" layoutY="118.0" text="Last Modified Between" />
+                  <DatePicker layoutX="339.0" layoutY="114.0" />
+                  <DatePicker layoutX="14.0" layoutY="114.0" />
+                  <Label layoutX="247.0" layoutY="157.0" text="Is Type" />
+                  <TextField layoutX="339.0" layoutY="153.0" promptText="File Type, use&quot;,&quot; for multiple" />
+                  <TextField layoutX="339.0" layoutY="186.0" promptText="File Type, use&quot;,&quot; for multiple" />
+                  <Label layoutX="235.0" layoutY="190.0" text="Is Not Type" />
+               </children>
+            </Pane>
+         </content></Tab>
+      <Tab text="Categorised Folder">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
+                  <Button layoutX="65.0" layoutY="63.0" mnemonicParsing="false" text="Create" />
+                  <ComboBox layoutX="122.0" layoutY="63.0" prefWidth="150.0" />
+                  <Label layoutX="153.0" layoutY="39.0" text="Group By" />
+               </children>
+            </Pane>
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>
