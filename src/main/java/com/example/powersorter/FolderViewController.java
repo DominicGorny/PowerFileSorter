@@ -29,5 +29,16 @@ public class FolderViewController {
     }
 
 
+    /**
+     * Closes the folder screen and re-opens the main window
+     * @param event
+     */
+    @FXML
+    void cancelFolderCreation(ActionEvent event)
+    {
+        mainApplication.homeView();
+    }
+
+
 
 }

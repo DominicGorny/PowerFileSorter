@@ -7,15 +7,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab text="Basic Folder">
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
-                  <TextField layoutX="121.0" layoutY="39.0" promptText="Folder Name" />
-                  <Button layoutX="276.0" layoutY="39.0" mnemonicParsing="false" text="Create" />
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#cancelFolderCreation" text="Cancel" />
+                  <TextField layoutX="155.0" layoutY="39.0" promptText="Folder Name" />
+                  <Button layoutX="95.0" layoutY="39.0" mnemonicParsing="false" text="Create" />
                </children>
             </Pane>
          </content></Tab>
@@ -23,7 +23,7 @@
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#cancelFolderCreation" text="Cancel" />
                   <Button layoutX="149.0" layoutY="39.0" mnemonicParsing="false" text="Create" />
                   <TextField layoutX="209.0" layoutY="39.0" promptText="Folder Name" />
                   <DatePicker layoutX="14.0" layoutY="76.0" />
@@ -43,10 +43,10 @@
          <content>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Cancel" />
-                  <Button layoutX="65.0" layoutY="63.0" mnemonicParsing="false" text="Create" />
-                  <ComboBox layoutX="122.0" layoutY="63.0" prefWidth="150.0" />
-                  <Label layoutX="153.0" layoutY="39.0" text="Group By" />
+                  <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#cancelFolderCreation" text="Cancel" />
+                  <Button layoutX="81.0" layoutY="63.0" mnemonicParsing="false" text="Create" />
+                  <ComboBox layoutX="138.0" layoutY="63.0" prefWidth="150.0" />
+                  <Label layoutX="169.0" layoutY="39.0" text="Group By" />
                </children>
             </Pane>
          </content>
