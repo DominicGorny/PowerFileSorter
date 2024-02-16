@@ -1,9 +1,9 @@
 package com.example.powersorter.actions.topLevelActions;
 
 import com.example.powersorter.Enums.IndvFileType;
-import com.example.powersorter.IndvFile;
+import com.example.powersorter.FileStructures.IndvFile;
 import com.example.powersorter.actions.lowLevelActions.LowLevelMoveAction;
-import com.example.powersorter.onTreeClickCallback;
+import com.example.powersorter.Controllers.onTreeClickCallback;
 import javafx.scene.control.TreeItem;
 
 /**

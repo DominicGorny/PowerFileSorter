@@ -15,4 +15,6 @@ module com.example.powersorter {
     opens com.example.powersorter.Controllers to javafx.fxml;
     exports com.example.powersorter.Enums;
     opens com.example.powersorter.Enums to javafx.fxml;
+    exports com.example.powersorter.FileStructures;
+    opens com.example.powersorter.FileStructures to javafx.fxml;
 }

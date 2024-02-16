@@ -1,6 +1,6 @@
 package com.example.powersorter.actions.topLevelActions;
 
-import com.example.powersorter.IndvFile;
+import com.example.powersorter.FileStructures.IndvFile;
 import javafx.scene.control.TreeItem;
 
 import java.io.File;

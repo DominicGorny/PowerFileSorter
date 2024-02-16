@@ -1,8 +1,7 @@
-package com.example.powersorter;
+package com.example.powersorter.Controllers;
 
+import com.example.powersorter.FileStructures.IndvFile;
 import javafx.scene.control.TreeItem;
-
-import javax.security.auth.callback.Callback;
 
 /**
  * interface used for functions that require the use of an on clicked item event in the tree view

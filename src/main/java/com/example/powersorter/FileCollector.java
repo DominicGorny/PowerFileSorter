@@ -1,13 +1,9 @@
 package com.example.powersorter;
 
-import javafx.collections.ObservableList;
+import com.example.powersorter.FileStructures.IndvFile;
 import javafx.scene.control.TreeItem;
-import org.controlsfx.control.tableview2.filter.filtereditor.SouthFilter;
 
-import javax.xml.transform.Source;
 import java.io.File;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 /**
  * object that is given a specific file path (to a folder) and contains functions to build a sub directory

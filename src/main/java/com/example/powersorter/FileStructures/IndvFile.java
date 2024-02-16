@@ -1,4 +1,4 @@
-package com.example.powersorter;
+package com.example.powersorter.FileStructures;
 
 import com.example.powersorter.Enums.IndvFileType;
 

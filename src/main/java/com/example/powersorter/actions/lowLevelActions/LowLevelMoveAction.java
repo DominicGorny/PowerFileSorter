@@ -1,15 +1,9 @@
 package com.example.powersorter.actions.lowLevelActions;
 
-import com.example.powersorter.IndvFile;
+import com.example.powersorter.FileStructures.IndvFile;
 import javafx.scene.control.TreeItem;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 /**
  * handles actual moving of files on the OS level

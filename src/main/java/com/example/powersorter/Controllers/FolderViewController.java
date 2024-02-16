@@ -1,7 +1,7 @@
 package com.example.powersorter.Controllers;
 
 import com.example.powersorter.Enums.FolderViewTabs;
-import com.example.powersorter.IndvFile;
+import com.example.powersorter.FileStructures.IndvFile;
 import com.example.powersorter.MainApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

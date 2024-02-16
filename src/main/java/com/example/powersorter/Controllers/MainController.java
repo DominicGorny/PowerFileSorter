@@ -2,14 +2,13 @@ package com.example.powersorter.Controllers;
 
 import com.example.powersorter.Enums.IndvFileType;
 import com.example.powersorter.FileCollector;
-import com.example.powersorter.IndvFile;
+import com.example.powersorter.FileStructures.IndvFile;
 import com.example.powersorter.MainApplication;
 import com.example.powersorter.actions.ActionManager;
 import com.example.powersorter.actions.topLevelActions.TopLevelAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelCreateBasicFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelDissolveFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
-import com.example.powersorter.onTreeClickCallback;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
