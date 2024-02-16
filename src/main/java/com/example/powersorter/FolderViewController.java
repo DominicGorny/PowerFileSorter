@@ -1,6 +1,7 @@
 package com.example.powersorter;
 
 import com.example.powersorter.actions.ActionManager;
+import com.example.powersorter.actions.FolderViewTabs;
 import com.example.powersorter.actions.topLevelActions.TopLevelAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelCreateBasicFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelDissolveFolderAction;
@@ -55,6 +56,8 @@ public class FolderViewController {
     ComboBox<String> categorisedFolderType;
     MainApplication mainApplication;
 
+    FolderViewTabs currentTab = FolderViewTabs.Basic;
+
     public FolderViewController(MainApplication mainApp)
     {
 
@@ -89,7 +92,7 @@ public class FolderViewController {
     @FXML
     void createFolder(ActionEvent event)
     {
-        System.out.println("made folder");
+        System.out.println("made folder of type " + currentTab.code);
         System.out.println("basic folder name: " + basicFolderName.getText());
         System.out.println("Filter Folder Name: " + filterFolderName.getText());
         System.out.println("crated between: " + createdStartDate.getValue() + " and " + createdEndDate.getValue());
@@ -104,8 +107,12 @@ public class FolderViewController {
     @FXML
     void tabSelectionChange(Event event)
     {
-        System.out.println(folderTypePane.getSelectionModel().getSelectedItem().getText());
-
+        String textValueOfSelectedTab = folderTypePane.getSelectionModel().getSelectedItem().getText();
+        currentTab = FolderViewTabs.getByName(textValueOfSelectedTab);
+        if (currentTab == null)
+        {
+            throw new IllegalArgumentException("Unexpected Tab Value");
+        }
     }
 
 
