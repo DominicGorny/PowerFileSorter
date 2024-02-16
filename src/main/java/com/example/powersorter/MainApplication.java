@@ -65,6 +65,7 @@ public class MainApplication extends Application {
     public void folderView()
     {
         myStage.setScene(folderEditor);
+        myFolderViewController.initController();
     }
 
     public void homeView()
