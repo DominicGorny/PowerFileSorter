@@ -111,7 +111,7 @@ public class MainController {
 
         if (mockParentItem == null)
         {
-            mockParentItem = new TreeItem<IndvFile>(new IndvFile(newFileDirectory.getRootItem().getValue().getEncapsulatedFile()));
+            mockParentItem = new TreeItem<IndvFile>(new IndvFile());
             mockParentItem.getChildren().add(newFileDirectory.parentItem);
             mockParentItem.getValue().setName("Origin");
             mockParentItem.setExpanded(true);

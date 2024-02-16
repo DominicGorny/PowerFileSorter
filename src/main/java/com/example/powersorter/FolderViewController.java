@@ -26,37 +26,39 @@ import java.io.File;
 public class FolderViewController {
 
     @FXML
-    TabPane folderTypePane;
+    private TabPane folderTypePane;
 
     @FXML
-    TextField basicFolderName;
+    private TextField basicFolderName;
 
     @FXML
-    TextField filterFolderName;
+    private TextField filterFolderName;
 
     @FXML
-    TextField filterFolderType;
+    private TextField filterFolderType;
 
     @FXML
-    TextField filterFolderNotType;
+    private TextField filterFolderNotType;
 
     @FXML
-    DatePicker createdStartDate;
+    private DatePicker createdStartDate;
 
     @FXML
-    DatePicker createdEndDate;
+    private DatePicker createdEndDate;
 
     @FXML
-    DatePicker modifiedStartDate;
+    private DatePicker modifiedStartDate;
 
     @FXML
-    DatePicker modifiedEndDate;
+    private DatePicker modifiedEndDate;
 
     @FXML
-    ComboBox<String> categorisedFolderType;
-    MainApplication mainApplication;
+    private ComboBox<String> categorisedFolderType;
+    private MainApplication mainApplication;
 
-    FolderViewTabs currentTab = FolderViewTabs.Basic;
+    private FolderViewTabs currentTab = FolderViewTabs.Basic;
+
+    private TreeItem<IndvFile> FolderParent;
 
     public FolderViewController(MainApplication mainApp)
     {
@@ -74,6 +76,11 @@ public class FolderViewController {
         ObservableList<String> categorisationAttributes = FXCollections.observableArrayList("Type",
                 "Last Modified","Created");
         categorisedFolderType.setItems(categorisationAttributes);
+
+    }
+
+    public void setFolderParent(TreeItem<IndvFile> folderParent)
+    {
 
     }
 

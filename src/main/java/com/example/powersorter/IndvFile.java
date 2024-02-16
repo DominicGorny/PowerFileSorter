@@ -11,8 +11,10 @@ public class IndvFile {
     private String name = null;
     private String type = null;
 
+    private boolean isDirectory;
+
     /**
-     * Describes wether this file encapsulated file is meant to be read or is just a mock for the tree graph root
+     * Describes weather this file encapsulated file is meant to be read or is just a mock (does not really exist)
      */
     private boolean isMock = false;
 
@@ -25,7 +27,9 @@ public class IndvFile {
     public IndvFile () {
         this.name = "Not Available";
         this.encapsulatedFile = null;
-        this.type = "Not available";
+        this.type = "Mock File";
+        this.isMock = true;
+        this.isDirectory = true;
     }
     /**
      * Constructor that builds and individual file class by using the information from a java file type object
@@ -42,7 +46,7 @@ public class IndvFile {
             String[] nameSegments = this.name.split("\\.");
             this.type = "." +  nameSegments[nameSegments.length - 1];
         }
-
+        this.isDirectory = representedFile.isDirectory();
         this.encapsulatedFile = representedFile;
     }
 
@@ -84,4 +88,6 @@ public class IndvFile {
     public boolean isMock() {
         return isMock;
     }
+
+    public boolean isDirectory() {return isDirectory;};
 }
