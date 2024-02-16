@@ -1,5 +1,6 @@
 package com.example.powersorter.actions.topLevelActions;
 
+import com.example.powersorter.Enums.IndvFileType;
 import com.example.powersorter.IndvFile;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeItem;
@@ -28,7 +29,7 @@ public class TopLevelDissolveFolderAction implements TopLevelAction {
     public TopLevelDissolveFolderAction(TreeItem<IndvFile> folderToDissolve)
     {
         //check operation legality
-        if (folderToDissolve.getValue().isMock())
+        if (folderToDissolve.getValue().getFileType() == IndvFileType.Origin)
         {
             actionValid = false;
             System.out.println("Illegal Dissolve action: can't dissolve mock folders");
@@ -36,7 +37,7 @@ public class TopLevelDissolveFolderAction implements TopLevelAction {
         }
         // does not allow the user to dissolve the first actual folder
         //to stop them from just dumping files in top level directories.
-        if (folderToDissolve.getParent().getValue().isMock())
+        if (folderToDissolve.getParent().getValue().getFileType() == IndvFileType.Origin)
         {
             actionValid = false;
             System.out.println("Illegal Dissolve action: can't dissolve top level folder");

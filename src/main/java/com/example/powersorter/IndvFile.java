@@ -1,5 +1,7 @@
 package com.example.powersorter;
 
+import com.example.powersorter.Enums.IndvFileType;
+
 import java.io.File;
 import java.util.List;
 
@@ -8,15 +10,12 @@ import java.util.List;
  */
 public class IndvFile {
 
+    private IndvFileType fileType;
+
     private String name = null;
     private String type = null;
 
-    private boolean isDirectory;
 
-    /**
-     * Describes weather this file encapsulated file is meant to be read or is just a mock (does not really exist)
-     */
-    private boolean isMock = false;
 
     private File encapsulatedFile = null;
 
@@ -24,12 +23,11 @@ public class IndvFile {
     /**
      * empty constructor
      */
-    public IndvFile () {
+    public IndvFile (IndvFileType newFileType) {
         this.name = "Not Available";
         this.encapsulatedFile = null;
-        this.type = "Mock File";
-        this.isMock = true;
-        this.isDirectory = true;
+        this.type = newFileType.toString();
+        fileType = newFileType;
     }
     /**
      * Constructor that builds and individual file class by using the information from a java file type object
@@ -46,7 +44,14 @@ public class IndvFile {
             String[] nameSegments = this.name.split("\\.");
             this.type = "." +  nameSegments[nameSegments.length - 1];
         }
-        this.isDirectory = representedFile.isDirectory();
+        if(representedFile.isDirectory())
+        {
+            this.fileType = IndvFileType.Directory;
+        }
+        else
+        {
+            this.fileType = IndvFileType.LoadedFile;
+        }
         this.encapsulatedFile = representedFile;
     }
 
@@ -81,13 +86,7 @@ public class IndvFile {
         this.name = name;
     }
 
-    public void setMock(boolean mock) {
-        isMock = mock;
+    public IndvFileType getFileType() {
+        return fileType;
     }
-
-    public boolean isMock() {
-        return isMock;
-    }
-
-    public boolean isDirectory() {return isDirectory;};
 }

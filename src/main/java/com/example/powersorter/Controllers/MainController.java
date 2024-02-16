@@ -1,5 +1,6 @@
 package com.example.powersorter.Controllers;
 
+import com.example.powersorter.Enums.IndvFileType;
 import com.example.powersorter.FileCollector;
 import com.example.powersorter.IndvFile;
 import com.example.powersorter.MainApplication;
@@ -26,7 +27,7 @@ public class MainController {
     private onTreeClickCallback onClickFunction = null;
     private TopLevelAction onClickAction = null;
     private Window parentWindow;
-    private TreeItem<IndvFile> mockParentItem;
+    private TreeItem<IndvFile> treeRootItem;
 
     private MainApplication mainApplication;
 
@@ -113,18 +114,17 @@ public class MainController {
         FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
         newFileDirectory.multiLayerScoop(newFileDirectory.getParentItem());
 
-        if (mockParentItem == null)
+        if (treeRootItem == null)
         {
-            mockParentItem = new TreeItem<IndvFile>(new IndvFile());
-            mockParentItem.getChildren().add(newFileDirectory.getParentItem());
-            mockParentItem.getValue().setName("Origin");
-            mockParentItem.setExpanded(true);
-            mockParentItem.getValue().setMock(true);
-            tableView.setRoot(mockParentItem);
+            treeRootItem = new TreeItem<IndvFile>(new IndvFile(IndvFileType.Origin));
+            treeRootItem.getChildren().add(newFileDirectory.getParentItem());
+            treeRootItem.getValue().setName("Origin");
+            treeRootItem.setExpanded(true);
+            tableView.setRoot(treeRootItem);
         }
         else
         {
-            mockParentItem.getChildren().add(newFileDirectory.getParentItem());
+            treeRootItem.getChildren().add(newFileDirectory.getParentItem());
         }
         tableView.refresh();
     }
@@ -136,9 +136,9 @@ public class MainController {
     @FXML
     void closeSourceFile(ActionEvent event)
     {
-        if(mockParentItem.getChildren().contains(tableView.getSelectionModel().getSelectedItem()))
+        if(treeRootItem.getChildren().contains(tableView.getSelectionModel().getSelectedItem()))
         {
-            mockParentItem.getChildren().remove(tableView.getSelectionModel().getSelectedItem());
+            treeRootItem.getChildren().remove(tableView.getSelectionModel().getSelectedItem());
         }
         else
         {
@@ -146,10 +146,10 @@ public class MainController {
         }
 
         //remove mock parent on empty origin list so that the table shows "no contents"
-        if (mockParentItem.getChildren().isEmpty())
+        if (treeRootItem.getChildren().isEmpty())
         {
             tableView.setRoot(null);
-            mockParentItem = null;
+            treeRootItem = null;
         }
 
         tableView.refresh();

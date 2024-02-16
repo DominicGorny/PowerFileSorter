@@ -1,5 +1,6 @@
 package com.example.powersorter.actions.topLevelActions;
 
+import com.example.powersorter.Enums.IndvFileType;
 import com.example.powersorter.IndvFile;
 import com.example.powersorter.actions.lowLevelActions.LowLevelMoveAction;
 import com.example.powersorter.onTreeClickCallback;
@@ -49,7 +50,11 @@ public class TopLevelMoveAction implements onTreeClickCallback, TopLevelAction {
     private void updateTreeView(TreeItem<IndvFile> targetFile)
     {
 
-        if (targetFile.getValue().isDirectory())
+        IndvFileType tFileType = targetFile.getValue().getFileType();
+
+        if (tFileType == IndvFileType.Directory ||
+                tFileType == IndvFileType.Origin ||
+                tFileType == IndvFileType.CommandDirectory)
         {
             fileToTarget = targetFile;
             this.fileToMove.parentProperty().get().getChildren().remove(fileToMove);
