@@ -1,4 +1,4 @@
-package com.example.powersorter.actions;
+package com.example.powersorter.Enums;
 
 import java.util.Objects;
 

@@ -1,5 +1,7 @@
 package com.example.powersorter;
 
+import com.example.powersorter.Controllers.FolderViewController;
+import com.example.powersorter.Controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

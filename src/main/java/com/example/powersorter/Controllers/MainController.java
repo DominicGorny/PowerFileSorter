@@ -1,10 +1,14 @@
-package com.example.powersorter;
+package com.example.powersorter.Controllers;
 
+import com.example.powersorter.FileCollector;
+import com.example.powersorter.IndvFile;
+import com.example.powersorter.MainApplication;
 import com.example.powersorter.actions.ActionManager;
 import com.example.powersorter.actions.topLevelActions.TopLevelAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelCreateBasicFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelDissolveFolderAction;
 import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
+import com.example.powersorter.onTreeClickCallback;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -107,12 +111,12 @@ public class MainController {
         DirectoryChooser directoryPicker = new DirectoryChooser();
         File upperDirectory = directoryPicker.showDialog(parentWindow);
         FileCollector newFileDirectory = new FileCollector(upperDirectory.getAbsolutePath());
-        newFileDirectory.multiLayerScoop(newFileDirectory.parentItem);
+        newFileDirectory.multiLayerScoop(newFileDirectory.getParentItem());
 
         if (mockParentItem == null)
         {
             mockParentItem = new TreeItem<IndvFile>(new IndvFile());
-            mockParentItem.getChildren().add(newFileDirectory.parentItem);
+            mockParentItem.getChildren().add(newFileDirectory.getParentItem());
             mockParentItem.getValue().setName("Origin");
             mockParentItem.setExpanded(true);
             mockParentItem.getValue().setMock(true);
@@ -120,7 +124,7 @@ public class MainController {
         }
         else
         {
-            mockParentItem.getChildren().add(newFileDirectory.parentItem);
+            mockParentItem.getChildren().add(newFileDirectory.getParentItem());
         }
         tableView.refresh();
     }
@@ -183,7 +187,7 @@ public class MainController {
     /**
      * Prepares the content of the tree table view for display
      */
-    void prepareTreeTable()
+    public void prepareTreeTable()
     {
 //        FileCollector testFiles = new FileCollector("/Users/kiwi4/Downloads/");
 //

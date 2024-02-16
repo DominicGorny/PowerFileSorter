@@ -33,7 +33,7 @@ public class FileCollector {
      * creates a file collector at the path passed in
      * @param parentPath
      */
-    FileCollector(String parentPath)
+    public FileCollector(String parentPath)
     {
         this.parentPath = parentPath;
         this.parentFile = new File(parentPath);
@@ -70,7 +70,7 @@ public class FileCollector {
      * @return the folder as a tree item with all items, sub-folders and items in folders attached as children
      * in a representative hierarchy
      */
-    TreeItem<IndvFile> multiLayerScoop(TreeItem<IndvFile> inputItem)
+    public TreeItem<IndvFile> multiLayerScoop(TreeItem<IndvFile> inputItem)
     {
         for (File childFile: inputItem.getValue().getEncapsulatedFile().listFiles())
         {
@@ -88,6 +88,11 @@ public class FileCollector {
         }
 
         return inputItem;
+    }
+
+    public TreeItem<IndvFile> getParentItem()
+    {
+        return parentItem;
     }
 
 

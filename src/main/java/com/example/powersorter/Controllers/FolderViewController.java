@@ -1,26 +1,14 @@
-package com.example.powersorter;
+package com.example.powersorter.Controllers;
 
-import com.example.powersorter.actions.ActionManager;
-import com.example.powersorter.actions.FolderViewTabs;
-import com.example.powersorter.actions.topLevelActions.TopLevelAction;
-import com.example.powersorter.actions.topLevelActions.TopLevelCreateBasicFolderAction;
-import com.example.powersorter.actions.topLevelActions.TopLevelDissolveFolderAction;
-import com.example.powersorter.actions.topLevelActions.TopLevelMoveAction;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
+import com.example.powersorter.Enums.FolderViewTabs;
+import com.example.powersorter.IndvFile;
+import com.example.powersorter.MainApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.Window;
-import javafx.util.Callback;
-
-import java.io.File;
-
 
 
 public class FolderViewController {
