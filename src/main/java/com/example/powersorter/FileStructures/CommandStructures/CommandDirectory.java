@@ -1,4 +1,6 @@
-package com.example.powersorter.FileStructures;
+package com.example.powersorter.FileStructures.CommandStructures;
+
+import com.example.powersorter.FileStructures.IndvFile;
 
 /**
  * An interface that defines the implementation of commandDirectories
