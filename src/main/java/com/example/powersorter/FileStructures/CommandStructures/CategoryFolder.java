@@ -8,12 +8,7 @@ import com.example.powersorter.FileStructures.IndvFile;
  * e.g There might be a category folder for file type, this means that each file is filed in such a way
  * that each file type has its own folder
  */
-public class CategoryFolder implements CommandDirectory{
-    @Override
-    public long getAge() {
-        return 0;
-    }
-
+public class CategoryFolder extends CommandDirectory{
     @Override
     public boolean offer(IndvFile offeredFile) {
         return false;
