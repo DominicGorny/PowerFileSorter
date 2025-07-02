@@ -1,4 +1,4 @@
-##Power Sorter
+## Power Sorter
 #### Power sorter is under development by Dominic Gorny and is currently a work in progress.
 
 ## The end goal
